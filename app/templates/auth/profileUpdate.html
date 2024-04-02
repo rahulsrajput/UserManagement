@@ -1,0 +1,70 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}{{request.user|capfirst}} {% endblock %}
+
+{% block content %}
+
+<div class="card mb-4">
+
+    <h3 class="card-title mb-4">Profile Update</h3>
+
+    <!-- Error -->
+    {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{error}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    {% endfor %}
+    {% endif %}
+
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    <!-- Error -->
+
+
+
+    <!-- profile update form -->
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        <!-- {{form|crispy}} -->
+
+        <div id="div_id_email" class="mb-3">
+            <label for="id_email" class="form-label">{{form.email.label}}<span class="asteriskField">*</span></label>
+            <div>
+                {{form.email}}
+            </div>
+        </div>
+
+        <div id="div_id_username" class="mb-3">
+            <label for="id_username" class="form-label requiredField">{{form.username.label}}<span
+                    class="asteriskField">*</span></label>
+            <div>
+                {{form.username}}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-block">Update</button>
+
+    </form>
+    <!-- profile update form -->
+
+
+    <div class="row mt-3">
+        <div class="col-lg-6">
+            <a href="{% url 'passwordChange' %}" class="btn btn-half-width">Password Update</a>            
+        </div>
+        <div class="col-lg-6">
+            <a href="{% url 'delete_account' %}" class="btn btn-half-width">Delete Account</a>            
+        </div>
+    </div>
+
+</div>
+{% endblock %}

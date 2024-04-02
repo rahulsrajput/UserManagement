@@ -1,0 +1,80 @@
+/* Hex Codes: #FFFDD0, #121212, #FF7F11, #7476bb*/
+
+
+.card {
+    max-width: 380px;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding: 20px;
+    border-radius: 1%;
+    font-family: 'Exo 2', 'sans-serif';
+    color: #121212;
+}
+
+.card .form-group {
+    margin-bottom: 15px;
+}
+
+.card .form-control {
+    border-radius: 0;
+    background-color: transparent;
+    border-color: #121212;
+    color: #121212;
+}
+
+.card .form-control:focus {
+    border-color: #121212;
+    box-shadow: none;
+}
+
+.card .btn-half-width {
+    width: 100%;
+    margin-right: 10px;
+}
+
+.card .btn {
+    background-color: #FF7F11;
+    border-color: #FF7F11;
+    font-family: 'Exo 2', 'sans-serif';
+    color: white;
+}
+
+
+.card .btn:hover {
+    background-color: #fc6500;
+    border-color: #fc6500;
+    font-family: 'Exo 2', 'sans-serif';
+    color: white;
+}
+
+.row .btn-half-width {
+    background-color: #121212;
+    margin-top: 5px;
+}
+.row .btn-half-width:hover{
+    background-color: #363636;
+    font-family: 'Exo 2', 'sans-serif';
+}
+
+
+.card .card-title {
+    text-align: center;
+    color: #121212;
+}
+
+.main h1 {
+    font-family: 'Exo 2', 'sans-serif';
+    font-weight: 500;
+    color: white;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: white;
+    font-family: 'Exo 2', 'sans-serif';
+    font-weight: 500;
+}
+
+.navbar .navbar-toggler {
+    color: white;
+}

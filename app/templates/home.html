@@ -1,0 +1,91 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}User Management{% endblock %}
+
+{% block content %}
+<style>
+    .centered-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        text-align: center;
+    }
+
+    .typing-animation {
+        overflow: hidden;
+        border-right: .15em solid orange;
+        /* The typwriter cursor */
+        white-space: nowrap;
+        /* Keeps the content on a single line */
+        margin: 0 auto;
+        /* Gives that scrolling effect as the typing happens */
+        animation: typing 2s steps(40, end), blink-caret .75s step-end infinite;
+    }
+
+    @keyframes typing {
+        from {
+            width: 0
+        }
+
+        to {
+            width: 100%
+        }
+    }
+
+    @keyframes blink-caret {
+
+        from,
+        to {
+            border-color: transparent
+        }
+
+        50% {
+            border-color: orange;
+        }
+    }
+</style>
+
+
+<div class="centered-text">
+    <h1>Hi {{request.user|capfirst}}</h1>
+    <div id="typing-text" class="typing-animation"></div>
+</div>
+
+<script>
+    const textArray = ["User Login, User Logout, User Registration","User Profile Update","User Password Reset","User Password Update","User Account Delete"];
+    let textIndex = 0;
+    let charIndex = 0;
+    let typingText = document.getElementById("typing-text");
+
+    function type() {
+        if (charIndex < textArray[textIndex].length) {
+            typingText.textContent += textArray[textIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(type, 100);
+        } else {
+            setTimeout(erase, 1500);
+        }
+    }
+
+    function erase() {
+        if (charIndex > 0) {
+            typingText.textContent = textArray[textIndex].substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(erase, 50);
+        } else {
+            textIndex++;
+            if (textIndex >= textArray.length) {
+                textIndex = 0;
+            }
+            setTimeout(type, 1000);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(type, 1000);
+    });
+</script>
+
+{% endblock %}
